@@ -66,7 +66,7 @@
                                 <p class="base">{{ $post->excerpt() }} ...</p>
                             </div>
                             <div class="w-full overflow-hidden pt-10 pb-10">
-                                <a href="/"
+                                <a href="/blog/{{ $post->slug }}"
                                     class="text-center border-2 border-gray-700 bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase rounded-md">Read
                                     More</a>
                             </div>
