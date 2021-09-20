@@ -9,6 +9,12 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -85,6 +91,7 @@ class PostsController extends Controller
      */
     public function edit($slug)
     {
+        $id = Auth::id();
         return view('blog.edit')
             ->with('post', Post::where('slug', $slug)->first());
     }
@@ -99,6 +106,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $slug)
     {
+        $id = Auth::id();
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -135,6 +143,7 @@ class PostsController extends Controller
      */
     public function destroy($slug)
     {
+        $id = Auth::id();
         $post = Post::where('slug', $slug);
         $post->delete();
 

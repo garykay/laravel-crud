@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="background-image grid grid-cols-1" style="background-image: url('{{ asset('images/' . $post->image_path) }}')">
+    <div class="background-image grid grid-cols-1" style="background-image: url('{{ asset('images/' . $post->image_path) }}'); background-attachment: initial;">
 
         <div class="flex text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
