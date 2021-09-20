@@ -36,6 +36,7 @@ class PostsController extends Controller
      */
     public function create()
     {
+        $id = Auth::id();
         return view('blog.create');
     }
 
@@ -47,6 +48,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $id = Auth::id();
         $request->validate([
             'title' => 'required',
             'description' => 'required',
