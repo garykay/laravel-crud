@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CpdsController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,5 @@ Route::get('/contact', [PagesController::class, 'contact']);
 
 Route::resource('/blog', PostsController::class);
 Route::resource('/cpds', CpdsController::class);
-
 Auth::routes();
-
 Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

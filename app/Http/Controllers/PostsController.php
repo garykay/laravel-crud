@@ -9,12 +9,6 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -36,8 +30,10 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $id = Auth::id();
+        if (Auth::check()) {
         return view('blog.create');
+        }
+        return redirect()->guest(route('login'));
     }
 
     /**
@@ -48,7 +44,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $id = Auth::id();
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -93,9 +88,15 @@ class PostsController extends Controller
      */
     public function edit($slug)
     {
-        $id = Auth::id();
+
+        if (Auth::check()) {
+
         return view('blog.edit')
             ->with('post', Post::where('slug', $slug)->first());
+
+        }
+
+        return redirect()->guest(route('login'));
     }
 
     /**
@@ -108,7 +109,6 @@ class PostsController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        $id = Auth::id();
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -145,11 +145,13 @@ class PostsController extends Controller
      */
     public function destroy($slug)
     {
-        $id = Auth::id();
+        if (Auth::check()) {
         $post = Post::where('slug', $slug);
         $post->delete();
 
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
+        }
+        return redirect()->guest(route('login'));
     }
 }
