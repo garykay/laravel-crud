@@ -15,17 +15,17 @@
 
                 <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     Dashboard | <a href="/cpds">My CPD Records</a>
+                    @if (Auth::check())
+                    <a href="/blog/create"
+                        class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                        Add A Blog Post
+                    </a>
+
+            @endif
                 </header>
 
                 <div class="w-full p-6">
-                    @if (Auth::check())
-                        <div class="pt-15 w-4/5 m-auto">
-                            <a href="/blog/create"
-                                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-                                Add CPD Record
-                            </a>
-                        </div>
-                    @endif
+
 
                     @foreach ($posts as $post)
                         <div class="sm:grid grid-cols-1 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
