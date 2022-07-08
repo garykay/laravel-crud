@@ -16,7 +16,7 @@
 
     <div class="w-4/5 m-auto pt-20">
         <span class="text-gray-500">
-            Bt <span class="font-bold italic text-gray-800">{{$post->user->name}}, Created on
+            By <span class="font-bold italic text-gray-800">{{$post->user->name}}, Created on
             {{ date('jS M Y', strtotime($post->updated_at)) }}</span>
         </span>
 
